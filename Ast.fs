@@ -100,10 +100,10 @@ let pfunc =
     |>> Func
 
 let pfunccall = 
-        spaces  >>?  skipString "CALL"   
-    .>> spaces1 >>.  pident              
-    .>> spaces1 .>>  skipString "WITH" 
+        spaces  >>?  pident              
+    .>> spaces  .>>? skipChar '(' 
                 .>>. pexp_list
+                .>>  skipChar ')'
     |>> FuncCall
 
 let pindex = 

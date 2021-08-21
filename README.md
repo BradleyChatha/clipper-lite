@@ -42,5 +42,4 @@ Certain modifications to the language have been made:
 
 * `?` and `??`
 
-* Function calling in the form of `CALL func WITH arg1, arg2, ...` as for some reason the form `func(arg1, ...)` breaks the parser massively
-  * I couldn't tell you how relieved I was to see that Clipper had the former syntax :D
+* Function calling

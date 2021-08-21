@@ -1,10 +1,10 @@
 FUNCTION main()
-    LOCAL start = CALL TimeHnsecs WITH 0
+    LOCAL start = TimeHnsecs(0)
     LOCAL end = 0
     LOCAL elapsed = 0
 
     DO WHILE elapsed < 5000
-        end := CALL TimeHnsecs WITH 0
+        end := TimeHnsecs(0)
         elapsed := end - start
         elapsed := elapsed / 1000
 
