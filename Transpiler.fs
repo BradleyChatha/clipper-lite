@@ -77,6 +77,10 @@ let rec transpile (ast: AstTypes, level: int) =
         | Number num ->
             yield (string num)
             yield "L"
+        | Str str ->
+            yield "\""
+            yield str
+            yield "\""
         | Index (name, index) ->
             for str in (transpile (name, level)) do yield str
             yield "["

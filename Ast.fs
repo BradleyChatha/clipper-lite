@@ -46,7 +46,7 @@ let pnumber = pint64 |>> Number
 let ptrue   = stringReturn ".T." true |>> True
 let pfalse  = stringReturn ".F." false |>> False
 let pbool   = ptrue <|> pfalse
-let pstr    = between (pchar '"') (pchar '"') (manyChars anyChar) |>> Str
+let pstr    = between (pchar '"') (pchar '"') (manyChars (noneOf "\"")) |>> Str
 
 let pexp, pexpRef = createParserForwardedToRef<AstTypes, unit>()
 let ptopexp, ptopexpRef = createParserForwardedToRef<AstTypes, unit>()
