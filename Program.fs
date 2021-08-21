@@ -17,7 +17,7 @@ let main argv =
             for str in result do
                 builder.Append str |> ignore
 
-        Console.WriteLine (builder.ToString())
+        System.IO.File.WriteAllText ("program.d", builder.ToString())
     | Failure (a, b, c) ->
         Console.WriteLine $"Error: {a}"
         ()
