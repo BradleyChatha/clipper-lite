@@ -90,6 +90,13 @@ let rec transpile (ast: AstTypes, level: int) =
             yield "writeln("
             for arg in args do
                 for str in (transpile (arg, level)) do yield str
+                yield ", "
+            yield ")"
+        | Print args ->
+            yield "writeln("
+            for arg in args do
+                for str in (transpile (arg, level)) do yield str
+                yield ", "
             yield ")"
         | FuncCall (name, args) ->
             let iname = expectIdent name
@@ -108,6 +115,8 @@ let rec transpile (ast: AstTypes, level: int) =
             elif iname = "Len" then
                 for str in (transpile (args.[0], level)) do yield str
                 yield ".length"
+            elif iname = "TimeHnsecs" then
+                yield "Clock.currStdTime"
             else
                 yield iname
                 yield "("
